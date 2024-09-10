@@ -1,6 +1,6 @@
 package com.solonezowaty.nbpratesapp.data
 
-import com.solonezowaty.nbpratesapp.domain.model.NbpRatesTableData
+import com.solonezowaty.nbpratesapp.data.model.NbpRatesTableData
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -12,5 +12,5 @@ interface NbpRatesApi {
     @GET("exchangerates/tables/{table}/")
     suspend fun getCurrentRatesTableType(
         @Path("table") tableType: String
-    ): NbpRatesTableData
+    ): List<NbpRatesTableData>
 }
