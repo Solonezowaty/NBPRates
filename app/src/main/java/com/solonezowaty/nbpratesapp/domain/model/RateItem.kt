@@ -4,5 +4,5 @@ data class RateItem(
     val tableType: String,
     val code: String,
     val currency: String,
-    val midRate: Double
+    val midRate: String
 )

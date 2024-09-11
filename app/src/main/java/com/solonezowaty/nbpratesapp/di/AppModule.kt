@@ -32,13 +32,7 @@ object AppModule {
 
         httpClient
             .addInterceptor(logging)
-            .addInterceptor { chain ->
-                chain.proceed(
-                    chain.request().newBuilder()
-                        .addHeader("Accept", "application/json")
-                        .build()
-                )
-            }
+
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create(moshi))

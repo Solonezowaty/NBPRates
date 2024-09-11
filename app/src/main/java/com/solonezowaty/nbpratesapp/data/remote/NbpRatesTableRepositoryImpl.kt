@@ -32,8 +32,8 @@ class NbpRatesTableRepositoryImpl @Inject constructor(
             RateItem(
                 tableType = response.table,
                 code = rate.code,
-                currency = rate.currency,
-                midRate = rate.mid
+                currency = rate.currency.uppercase(),
+                midRate = rate.mid.toBigDecimal().toPlainString()
             )
         }
     }

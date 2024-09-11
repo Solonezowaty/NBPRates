@@ -53,6 +53,7 @@ dependencies {
     //Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -65,12 +66,16 @@ dependencies {
     implementation(libs.arrow.core)
     implementation(libs.arrow.fx.coroutines)
 
-    //Compose and material
+    //Compose
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compiler)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.ui.tooling.preview)
+    debugImplementation(libs.androidx.ui.tooling)
+    implementation(libs.androidx.navigation.compose)
+
+    //Material
     implementation(libs.material)
     implementation(libs.androidx.material3)
 
