@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "NBPRatesApp"
 include(":app")
- 
+include(":current_rates")
+include(":core")
+include(":currency_details")

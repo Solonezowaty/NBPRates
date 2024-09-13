@@ -3,6 +3,7 @@ plugins {
     id("com.google.dagger.hilt.android")
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -47,6 +48,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
+    implementation(project(":current_rates"))
+    implementation(project(":currency_details"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
 

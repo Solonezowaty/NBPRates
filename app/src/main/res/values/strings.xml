@@ -3,5 +3,7 @@
 
     <string name="retry_button_label">Retry</string>
     <string name="error_message_text">Something went wrong, please try again</string>
+    <string name="current_rates_screen_title_text">Current rates</string>
+    <string name="code_label">Code: %1$s</string>
 
 </resources>
