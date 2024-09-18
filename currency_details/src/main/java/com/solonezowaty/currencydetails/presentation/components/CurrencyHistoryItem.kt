@@ -15,6 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.solonezowaty.core.ui.theme.Typography
+import com.solonezowaty.currencydetails.R
 import com.solonezowaty.currencydetails.domain.model.CurrencyRate
 
 @Composable
@@ -36,14 +38,14 @@ fun CurrencyHistoryItem(
         ) {
             Text(
                 text = item.date,
-                style = com.solonezowaty.core.ui.theme.Typography.titleSmall
+                style = Typography.titleSmall
             )
             Row(verticalAlignment = Alignment.CenterVertically) {
                 if (item.isDeviated) {
-//                    Image(
-//                        painter = painterResource(R.drawable.rate_up_icon),
-//                        contentDescription = null
-//                    )
+                    Image(
+                        painter = painterResource(R.drawable.rate_up_icon),
+                        contentDescription = null
+                    )
                 }
                 Text(
                     text = item.rate.toString(),

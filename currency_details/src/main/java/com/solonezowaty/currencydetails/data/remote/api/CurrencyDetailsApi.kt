@@ -8,7 +8,7 @@ import retrofit2.http.Path
 interface CurrencyDetailsApi {
 
     @GET("exchangerates/rates/{table}/{code}/{startDate}/{endDate}/")
-    suspend fun getRateDetailsFromLastTwoWeeks(
+    suspend fun getCurrencyDetailsFromLastTwoWeeks(
         @Path("table") tableType: String,
         @Path("code") currencyCode: String,
         @Path("startDate") startDate: String,

@@ -8,16 +8,16 @@ import com.solonezowaty.currencydetails.domain.repositories.CurrencyDetailsRepos
 import javax.inject.Inject
 
 class CurrencyDetailsRepositoryImpl @Inject constructor(
-    private val nbpRatesApi: CurrencyDetailsApi
+    private val currencyDetailsApi: CurrencyDetailsApi
 ) : CurrencyDetailsRepository {
 
-    override suspend fun getRateDetails(
+    override suspend fun getCurrencyDetails(
         tableType: String,
         currencyCode: String,
         startDate: String,
         endDate: String
     ): Either<Throwable, CurrencyDetails> {
-        return nbpRatesApi.getRateDetailsFromLastTwoWeeks(
+        return currencyDetailsApi.getCurrencyDetailsFromLastTwoWeeks(
             tableType = tableType,
             currencyCode = currencyCode,
             startDate = startDate,

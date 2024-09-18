@@ -83,7 +83,7 @@ class EitherCall<R>(
 
     override fun isCanceled(): Boolean = delegate.isCanceled
 
-    override fun request(): Request =delegate.request()
+    override fun request(): Request = delegate.request()
 
     override fun timeout(): Timeout = delegate.timeout()
 }

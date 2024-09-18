@@ -1,5 +1,6 @@
 package com.solonezowaty.currencydetails.data.mapper
 
+import com.solonezowaty.core.utils.Constants
 import com.solonezowaty.currencydetails.data.remote.model.CurrencyDetailsData
 import com.solonezowaty.currencydetails.domain.model.CurrencyDetails
 import com.solonezowaty.currencydetails.domain.model.CurrencyRate
@@ -11,7 +12,7 @@ fun CurrencyDetailsData.toCurrencyDetails(currentMidRate: Double) = CurrencyDeta
         CurrencyRate(
             date = rate.effectiveDate,
             rate = rate.mid,
-            isDeviated = rate.mid >= currentMidRate * 1.10
+            isDeviated = rate.mid >= currentMidRate * Constants.IS_DEVIATED_MULTIPLIER
         )
     }
 )

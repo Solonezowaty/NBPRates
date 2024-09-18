@@ -17,8 +17,8 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object ApiModule {
 
-    @Singleton
     @Provides
+    @Singleton
     fun provideRetrofit() : Retrofit {
         val moshi =
             Moshi.Builder()

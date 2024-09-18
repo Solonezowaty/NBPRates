@@ -1,7 +1,7 @@
 package com.solonezowaty.currencydetails.domain.di
 
-import com.solonezowaty.currencydetails.domain.usecases.GetRateDetailsUseCase
-import com.solonezowaty.currencydetails.domain.usecases.GetRateDetailsUseCaseImpl
+import com.solonezowaty.currencydetails.domain.usecases.GetCurrencyDetailsUseCase
+import com.solonezowaty.currencydetails.domain.usecases.GetCurrencyDetailsUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -12,7 +12,7 @@ import dagger.hilt.components.SingletonComponent
 abstract class CurrencyDetailsDomainModule {
 
     @Binds
-    abstract fun provideGetRateDetailsUseCase(
-        impl: GetRateDetailsUseCaseImpl
-    ): GetRateDetailsUseCase
+    abstract fun provideGetCurrencyDetailsUseCase(
+        impl: GetCurrencyDetailsUseCaseImpl
+    ): GetCurrencyDetailsUseCase
 }

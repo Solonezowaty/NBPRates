@@ -1,7 +1,7 @@
 package com.solonezowaty.currentrates.domain.di
 
-import com.solonezowaty.currentrates.domain.usecase.GetRatesUseCase
-import com.solonezowaty.currentrates.domain.usecase.GetRatesUseCaseImpl
+import com.solonezowaty.currentrates.domain.usecase.GetCurrentRatesUseCase
+import com.solonezowaty.currentrates.domain.usecase.GetCurrentRatesUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -12,7 +12,7 @@ import dagger.hilt.components.SingletonComponent
 abstract class CurrentRatesDomainModule {
 
     @Binds
-    abstract fun provideGetRatesUseCase(
-        impl: GetRatesUseCaseImpl
-    ): GetRatesUseCase
+    abstract fun provideGetCurrentRatesUseCase(
+        impl: GetCurrentRatesUseCaseImpl
+    ): GetCurrentRatesUseCase
 }

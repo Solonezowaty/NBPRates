@@ -3,6 +3,8 @@ package com.solonezowaty.currencydetails.presentation
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.solonezowaty.core.utils.NetworkResponse
+import com.solonezowaty.currencydetails.domain.usecases.GetCurrencyDetailsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CurrencyDetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val getRateDetailsUseCase: com.solonezowaty.currencydetails.domain.usecases.GetRateDetailsUseCase
+    private val getCurrencyDetailsUseCase: GetCurrencyDetailsUseCase
 ) : ViewModel() {
 
     private val tableType = checkNotNull(savedStateHandle.get<String?>("tableType"))
@@ -35,9 +37,9 @@ class CurrencyDetailsViewModel @Inject constructor(
 
         viewModelScope.launch {
             _state.value = _state.value.copy(
-                currencyDetails = com.solonezowaty.core.utils.NetworkResponse.Loading()
+                currencyDetailsNetworkResponse = NetworkResponse.Loading()
             )
-            getRateDetailsUseCase.getRatesDetails(
+            getCurrencyDetailsUseCase.getCurrencyDetails(
                 tableType = tableType,
                 currencyCode = code,
                 startDate = startDateInstant,
@@ -45,13 +47,13 @@ class CurrencyDetailsViewModel @Inject constructor(
             ).onRight { currencyDetails ->
                 _state.update {
                     it.copy(
-                        currencyDetails = com.solonezowaty.core.utils.NetworkResponse.Success(currencyDetails)
+                        currencyDetailsNetworkResponse = NetworkResponse.Success(currencyDetails)
                     )
                 }
             }.onLeft { throwable ->
                 _state.value =
                     _state.value.copy(
-                        currencyDetails = com.solonezowaty.core.utils.NetworkResponse.Error(throwable.message ?: "")
+                        currencyDetailsNetworkResponse = NetworkResponse.Error(throwable.message ?: "")
                     )
             }
         }

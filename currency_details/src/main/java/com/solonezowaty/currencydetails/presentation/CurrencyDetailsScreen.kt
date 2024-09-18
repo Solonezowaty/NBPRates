@@ -10,6 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.solonezowaty.core.presentation.composables.ErrorRetryComponent
+import com.solonezowaty.core.presentation.composables.LoadingProgressBar
+import com.solonezowaty.core.presentation.composables.NbpRatesTopBar
 import com.solonezowaty.core.utils.NetworkResponse
 import com.solonezowaty.currencydetails.presentation.components.CurrencyHistoryItem
 
@@ -20,33 +23,33 @@ fun CurrencyDetailsScreen(
 ) {
     Scaffold(
         topBar = {
-//            com.solonezowaty.core.presentation.ui.NbpRatesTopBar(
-//                navController = navController,
-//                screenTitle = state.currencyDetails.data?.currency ?: "",
-//                screenSubTitle = state.currencyDetails.data?.code ?: "",
-//                isBackAvailable = true
-//            )
+            NbpRatesTopBar(
+                navController = navController,
+                screenTitle = state.currencyDetailsNetworkResponse.data?.currency ?: "",
+                screenSubTitle = state.currencyDetailsNetworkResponse.data?.code ?: "",
+                isBackAvailable = true
+            )
         }
     ) { innerPadding ->
-        when(state.currencyDetails) {
+        when(state.currencyDetailsNetworkResponse) {
             is NetworkResponse.Error -> {
-//                ErrorRetryComponent(
-//                    modifier = Modifier
-//                        .padding(innerPadding)
-//                        .fillMaxSize()
-//                ) {
-//
-//                }
+                ErrorRetryComponent(
+                    modifier = Modifier
+                        .padding(innerPadding)
+                        .fillMaxSize()
+                ) {
+
+                }
             }
             is NetworkResponse.Loading -> {
-//                LoadingProgressBar(
-//                    modifier = Modifier
-//                        .padding(innerPadding)
-//                        .fillMaxSize()
-//                )
+                LoadingProgressBar(
+                    modifier = Modifier
+                        .padding(innerPadding)
+                        .fillMaxSize()
+                )
             }
             is NetworkResponse.Success -> {
-                state.currencyDetails.data?.ratesList?.let { rates ->
+                state.currencyDetailsNetworkResponse.data?.ratesList?.let { rates ->
                     LazyColumn(
                         modifier = Modifier
                             .padding(innerPadding)

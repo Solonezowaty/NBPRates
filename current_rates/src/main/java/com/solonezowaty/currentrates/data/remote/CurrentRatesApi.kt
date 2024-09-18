@@ -11,7 +11,7 @@ interface CurrentRatesApi {
         For purpose of this app we're passing only 'A' and 'B'
      */
     @GET("exchangerates/tables/{table}/")
-    suspend fun getCurrentRateTables(
+    suspend fun getCurrentRatesTable(
         @Path("table") tableType: String
     ): Either<Throwable, List<RateTablesData>>
 }
