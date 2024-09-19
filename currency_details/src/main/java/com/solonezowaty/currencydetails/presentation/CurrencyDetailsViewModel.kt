@@ -3,6 +3,7 @@ package com.solonezowaty.currencydetails.presentation
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.solonezowaty.core.utils.Constants
 import com.solonezowaty.core.utils.NetworkResponse
 import com.solonezowaty.currencydetails.domain.usecases.GetCurrencyDetailsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,9 +31,15 @@ class CurrencyDetailsViewModel @Inject constructor(
         getCurrencyDetails()
     }
 
+    fun onAction(action: CurrencyDetailsAction) {
+        when (action) {
+            CurrencyDetailsAction.Retry -> getCurrencyDetails()
+        }
+    }
+
     private fun getCurrencyDetails() {
         val endDateInstant = Instant.now()
-        val startDateInstant = endDateInstant.minus(14, ChronoUnit.DAYS)
+        val startDateInstant = endDateInstant.minus(Constants.NUMBER_OF_DAYS_FOR_HISTORY, ChronoUnit.DAYS)
 
 
         viewModelScope.launch {

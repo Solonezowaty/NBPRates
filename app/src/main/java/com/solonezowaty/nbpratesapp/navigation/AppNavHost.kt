@@ -53,7 +53,8 @@ fun AppNavHost(
 
             CurrencyDetailsScreen(
                 navController = navController,
-                state = state
+                state = state,
+                onAction = viewModel::onAction
             )
         }
     }

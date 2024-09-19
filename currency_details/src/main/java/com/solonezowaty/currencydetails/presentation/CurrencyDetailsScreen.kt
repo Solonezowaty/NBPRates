@@ -19,7 +19,8 @@ import com.solonezowaty.currencydetails.presentation.components.CurrencyHistoryI
 @Composable
 fun CurrencyDetailsScreen(
     navController: NavController,
-    state: CurrencyDetailsViewState
+    state: CurrencyDetailsViewState,
+    onAction:(action: CurrencyDetailsAction) -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -38,7 +39,7 @@ fun CurrencyDetailsScreen(
                         .padding(innerPadding)
                         .fillMaxSize()
                 ) {
-
+                    onAction(CurrencyDetailsAction.Retry)
                 }
             }
             is NetworkResponse.Loading -> {
@@ -72,6 +73,7 @@ fun CurrencyDetailsScreen(
 private fun ChallengeDetailScreenPreview() {
     CurrencyDetailsScreen(
         navController = rememberNavController(),
-        state = CurrencyDetailsViewState()
+        state = CurrencyDetailsViewState(),
+        onAction = {}
     )
 }
